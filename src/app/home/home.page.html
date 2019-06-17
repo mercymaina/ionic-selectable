@@ -1,0 +1,46 @@
+<ion-header >
+  <ion-toolbar color="secondary">
+    <ion-title>
+    Phone number
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row>
+
+<ion-item>
+  <ionic-selectable [(ngModel)]="country" itemValueField="dial_code"
+                    itemTextField="name"  [items]="countries" [canSearch]="true"
+                    searchFailText="Not Found!" headerColor="secondary" [hasVirtualScroll]="true"
+                    (onChange)="countryChange($event)" multiple="false">
+    <ng-template ionicSelectableItemEndTemplate let-country="item">
+      {{country.dial_code}}
+<!--<img class="country-flag" slot="start" [src]="country.flag" />-->
+      <i class="flag-icon flag-icon-{{country.code.toLowerCase()}}"   slot="start"></i>
+    </ng-template>
+    <ng-template ionicSelectableValueTemplate let-country="value">
+
+<!--<img class="country-flag" [src]="country.flag" />-->
+        <i class="flag-icon flag-icon-{{country.code.toLowerCase()}}"   slot="start"></i>
+        {{country.dial_code}}
+
+    </ng-template>
+  </ionic-selectable>
+</ion-item>
+
+  <ion-col>
+    <ion-item>
+      <div class="tax-wrap">
+        <ion-input placeholder="72222377" required="true" minlength="9" [(ngModel)]="phone_number">
+        </ion-input >
+      </div>
+
+    </ion-item>
+  </ion-col>
+
+
+</ion-row>
+
+  <ion-button type="submit" expand="block"  color="secondary">Submit</ion-button>
+</ion-content>
